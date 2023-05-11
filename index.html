@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CopyDoc | Home</title>
+  <link rel="icon" href="images/copydoc.ico" />
+
+  <!-- base:css -->
+  <link rel="stylesheet" href="vendors/typicons/typicons.css">
+  <link rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="vendors/css/vendor.bundle.base.css">
+  <!-- inject:css -->
+  <link rel="stylesheet" href="css/vertical-layout-light/style.css">
+  <!-- endinject -->
+
+  <!-- JQuery Library -->
+  <script src="vendors/jquery/jquery-3.6.4.min.js"></script>
+
+  <style>
+    .youtube-video {
+      aspect-ratio: 16/9;
+      width: 100%;
+    }
+
+    table {
+      font-family: sans-serif;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    table div {
+      border: 1px solid #000;
+      padding: 5px;
+      margin: 10px;
+      word-wrap: break-word;
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
+
+    table h6 {
+      padding: 1px;
+      margin: 1px;
+      font-size: 0.85em;
+      font-weight: bold;
+    }
+
+    table p {
+      padding: 1px;
+      margin: 1px;
+      font-size: 0.9em;
+    }
+
+    table h6.center,
+    table p.center {
+      text-align: center;
+    }
+
+    table h6.right,
+    table p.right {
+      text-align: right;
+    }
+
+    table h6.small,
+    table p.small {
+      font-size: 0.7em;
+    }
+
+    table h6.large,
+    table p.large {
+      font-size: 1em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="card col-lg-12 p-2 fixed-top">
+      <div class="d-flex mx-auto justify-content-end">
+        <h2><a class="text-info" href="#">CopyDoc <i class="typcn typcn-printer"></i></a></h2>
+      </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper mt-2">
+      <div class="content-wrapper mt-4">
+        <div class="row">
+          <!-- <div class="col-lg-12 grid-margin stretch-card mx-auto mt-4 mb-1">
+            <h6 class="card-description mb-0">
+              User Guide <i class="typcn typcn-arrow-right"></i> <a href="doc/copydoc_user_guide.pdf"
+                target="_blank">download
+                PDF</a> or <a href="#" onclick="showVideo()">watch Video</a>
+            </h6>
+          </div>
+          <div class="col-lg-8 grid-margin stretch-card mx-auto mb-1 d-none" id="video">
+            <div class="card">
+              <div class="card-body pb-2">
+                <!-- <video controls width="100%">
+                  <source src="doc/CopyDoc User Guide.mp4" type="video/mp4">
+                Your browser does not support HTML5 video.
+              </video> -->
+                <iframe class="youtube-video" src="https://www.youtube.com/embed/Uvf95obdA8E" title="CopyDoc User Guide"
+                  frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+                <button class="btn btn-sm btn-danger" onclick="hideVideo()">Close Video</button>
+              </div>
+            </div>
+          </div> -->
+          <div class="col-lg-6 grid-margin stretch-card mx-auto mt-4">
+            <div class="card">
+              <div class="card-header">
+                <button id="addHeader" type="button" class="btn btn-sm btn-info mr-2">Header <i
+                    class="typcn typcn-plus"></i></button>
+                <button id="addParagraph" type="button" class="btn btn-sm btn-info mr-2">Paragraph <i
+                    class="typcn typcn-plus"></i></button>
+              </div>
+              <div class="card-body">
+                <!-- <h4 class="card-title">Fill in the details below. (Each field is optional)</h4> -->
+                <p class="card-description">Use <<<b>text</b>>> to bold text and <> for new line</p>
+                <form class="forms-sample" action="display.php" method="post" target="_blank">
+                  <div id="form">
+                    <div class="form-group" id="rhhh1">
+                      <input type="hidden" name="type[]" value="header">
+                      <input type="text" class="form-control form-control-sm" id="hhh1" name="text[]"
+                        placeholder="Header Text" onkeyup="showCard(this.id)">
+                      <select class="w-25 d-inline form-control form-control-sm p-0" id="stylehhh1" name="sty[]"
+                        onchange="styleElement(this.id, this.value)">
+                        <option value="left">Left</option>
+                        <option selected value="center">Center</option>
+                        <option value="right">Right</option>
+                      </select>
+                      <select class="w-25 d-inline form-control form-control-sm p-0" id="sizehhh1" name="size[]"
+                        onchange="sizeElement(this.id, this.value)">
+                        <option value="small">Small</option>
+                        <option selected value="medium">Medium</option>
+                        <option value="large">Large</option>
+                      </select> <button id="delhhh1" type="button" class="btn btn-sm btn-danger ml-2"
+                        onclick="deleteHeader(this.id)">Delete</button>
+                    </div>
+                    <div class="form-group" id="rp1">
+                      <input type="hidden" name="type[]" value="paragraph">
+                      <textarea class="form-control" id="p1" name="text[]" placeholder="Paragraph Text" rows="4"
+                        onkeyup="showCard(this.id)"></textarea>
+                      <select class="w-25 d-inline form-control form-control-sm" id="stylep1" name="sty[]"
+                        onchange="styleElement(this.id, this.value)">
+                        <option value="left">Left</option>
+                        <option value="center">Center</option>
+                        <option value="right">Right</option>
+                      </select>
+                      <select class="w-25 d-inline form-control form-control-sm" id="sizep1" name="size[]"
+                        onchange="sizeElement(this.id, this.value)">
+                        <option value="small">Small</option>
+                        <option selected value="medium">Medium</option>
+                        <option value="large">Large</option>
+                      </select> <button id="delp1" type="button" class="btn btn-sm btn-danger ml-2"
+                        onclick="deleteHeader(this.id)">Delete</button>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-info mr-2">Print</button>
+                  <button type="reset" class="btn btn-light">Clear</button>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 grid-margin stretch-card my-auto">
+            <div class="card">
+              <div class="card-header mb-0 ">
+                <h4 class="card-title mb-0">
+                  Quick Preview
+                </h4>
+              </div>
+              <div class="card-body">
+                <table class="">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div id="preview">
+                          <h6 class="center preview" id="dhhh1">Header Text</h6>
+                          <p class="preview" id="dp1">Paragraph Text</p>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="col-lg-12 grid-margin mt-4 stretch-card">
+            <div class="card profile-card bg-gradient-primary">
+              <div class="card-header pb-1 m-0">
+                <h4 class="justify-content-between text-light">Meet the Developer</h4>
+              </div>
+              <div class="card-body">
+                <div class="row align-items-center h-100">
+                  <div class="col-md-4">
+                    <figure class="avatar mx-auto mb-4 mb-md-0">
+                      <img src="images/samakins.jpg" alt="Samuel Akinyemi">
+                    </figure>
+                  </div>
+                  <div class="col-md-8">
+                    <h5 class="text-white text-center text-md-left"><a class="text-white"
+                        href="http://bit.ly/samakins-portfolio">Samuel Akinyemi</a></h5>
+                    <p class="text-white text-center text-md-left">akinyemisamuel170@gmail.com</p>
+                    <div class="d-flex info pt-2">
+                      <div>
+                        <a href="https://bit.ly/samakins-portfolio" class="text-white font-weight-bold px-2"><i
+                            class="fa fa-lg fa-globe"></i></a>
+                        <a href="https://wa.me/+2347048706198" class="text-white font-weight-bold px-2"><i
+                            class="fa fa-lg fa-whatsapp"></i></a>
+                        <a href="https://github.com/samakins672" class="text-white font-weight-bold px-2"><i
+                            class="fa fa-lg fa-github"></i></a>
+                        <a href="https://twitter.com/Samakins01" class="text-white font-weight-bold px-2"><i
+                            class="fa fa-lg fa-twitter"></i></a>
+                        <a href="https://linkedin.com/in/samuel-akinyemi-927751225"
+                          class="text-white font-weight-bold px-2"><i class="fa fa-lg fa-linkedin"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+          <div class="col-lg-12 grid-margin stretch-card mx-auto">
+            <div class="card">
+              <div class="card-body py-2">
+                <h6 class="card-description my-2" style="text-align: center;">
+                  <i class="fa fa-copyright"></i> CopyDoc 2023, Open source version available on <a href="http://github.com/sannex/copydoc"
+                    target="_blank">Github</a>
+                </h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!-- base:js -->
+  <script src="vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- inject:js -->
+  <script src="js/off-canvas.js"></script>
+  <script src="js/hoverable-collapse.js"></script>
+  <script src="js/template.js"></script>
+  <!-- endinject -->
+  <!-- Custom JQuery for this page-->
+  <script type="text/javascript">
+    lastId = 1;
+    lastPId = 1;
+    $("#addHeader").click(function () {
+      lastId += 1;
+      newRowAdd =
+        '<div class="form-group" id="rhhh' + lastId + '">' +
+        '<input type="hidden" name="type[]" value="header">' +
+        '<input type="text" class="form-control form-control-sm" id="hhh' + lastId + '" name="text[]" placeholder="Header Text" onkeyup="showCard(this.id)">' +
+        '<select class="w-25 d-inline form-control form-control-sm p-0" id="stylehhh' + lastId + '" name="sty[]" onchange="styleElement(this.id, this.value)">' +
+        '<option value="left">Left</option>' +
+        '<option selected value="center">Center</option>' +
+        '<option value="right">Right</option>' +
+        '</select>' +
+        '<select class="w-25 d-inline form-control form-control-sm p-0" id="sizehhh' + lastId + '" name="size[]" onchange="sizeElement(this.id, this.value)">' +
+        '<option value="small">Small</option>' +
+        '<option selected value="medium">Medium</option>' +
+        '<option value="large">Large</option>' +
+        '</select>' + '<button id="delhhh' + lastId + '" type="button" class="btn btn-sm btn-danger ml-2" onclick="deleteHeader(this.id)">Delete</button>' +
+        '</div>';
+      newPrevAdd = '<h6 class="center preview" id="dhhh' + lastId + '">Header Text</h6>';
+
+      $('#form').append(newRowAdd);
+      $('#preview').append(newPrevAdd);
+    });
+
+    $("#addParagraph").click(function () {
+      lastPId += 1;
+      newRowAdd =
+        '<div class="form-group" id="rp' + lastPId + '">' +
+        '<input type="hidden" name="type[]" value="paragraph">' +
+        '<textarea class="form-control" id="p' + lastPId + '" name="text[]" placeholder="Paragraph Text" rows="4" onkeyup="showCard(this.id)"></textarea>' +
+        '<select class="w-25 d-inline form-control form-control-sm" id="stylep' + lastPId + '" name="sty[]" onchange="styleElement(this.id, this.value)">' +
+        '<option value="left">Left</option>' +
+        '<option value="center">Center</option>' +
+        '<option value="right">Right</option>' +
+        '</select>' +
+        '<select class="w-25 d-inline form-control form-control-sm" id="sizep' + lastPId + '" name="size[]" onchange="sizeElement(this.id, this.value)">' +
+        '<option value="small">Small</option>' +
+        '<option selected value="medium">Medium</option>' +
+        '<option value="large">Large</option>' +
+        '</select>' + '<button id="delp' + lastPId + '" type="button" class="btn btn-sm btn-danger ml-2" onclick="deleteHeader(this.id)">Delete</button>' +
+        '</div>';
+      newPrevAdd = '<p class="preview" id="dp' + lastPId + '">Paragraph Text</p>';
+
+
+      $('#form').append(newRowAdd);
+      $('#preview').append(newPrevAdd);
+    });
+
+  </script>
+  <!-- End JQuery for this page-->
+  <!-- Custom js for this page-->
+  <script>
+    function showCard(id) {
+      h = document.getElementById(id).value;
+      h = h.replaceAll('<>', '<br>');
+      h = h.replaceAll('<<', '<b>');
+      h = h.replaceAll('>>', '</b>');
+      // document.write(h);
+      document.getElementById('d' + id).innerHTML = h;
+    }
+    function styleElement(id, val) {
+      id = id.replace('style', '');
+      // document.write(val);
+      document.getElementById('d' + id).classList.remove('left');
+      document.getElementById('d' + id).classList.remove('right');
+      document.getElementById('d' + id).classList.remove('center');
+      document.getElementById('d' + id).classList.add(val);
+    }
+    function sizeElement(id, val) {
+      id = id.replace('size', '');
+      // document.write(val);
+      document.getElementById('d' + id).classList.remove('small');
+      document.getElementById('d' + id).classList.remove('medium');
+      document.getElementById('d' + id).classList.remove('large');
+      document.getElementById('d' + id).classList.add(val);
+    }
+    function deleteHeader(id) {
+      id = id.replace('del', '');
+      var child = document.getElementById("r" + id);
+      var child2 = document.getElementById("d" + id);
+      child.parentNode.removeChild(child);
+      child2.parentNode.removeChild(child2);
+    }
+
+    function showVideo() {
+      document.getElementById('video').classList.remove('d-none');
+    }
+    function hideVideo() {
+      document.getElementById('video').classList.add('d-none');
+    }
+  </script>
+  <!-- End custom js for this page-->
+</body>
+
+</html>
