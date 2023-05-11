@@ -6,10 +6,10 @@ CopyDoc is an open source software for creating a document with iterate copy of 
 
 ## Table of Content
 
-- [Project Structure](https://github.com/sannex-01/copydoc#project-structure)
-- [Quick Start](https://github.com/sannex-01/copydoc#quick-start)
-- [Deployment](https://github.com/sannex-01/copydoc#local-server-installation)
-- [Contributions](https://github.com/sannex-01/copydoc#contribution)
+- [Project Structure](#project-structure)
+- [Quick Start](#quick-start)
+- [Deployment](#local-server-installation)
+- [Contributions](#contribution)
 ## Project Structure
 
 ```
