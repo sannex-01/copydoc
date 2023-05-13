@@ -138,7 +138,9 @@
                         <option value="small">Small</option>
                         <option selected value="medium">Medium</option>
                         <option value="large">Large</option>
-                      </select> <button id="delhhh1" type="button" class="btn btn-sm btn-danger ml-2"
+                      </select> 
+                      <input class="ml-2" type="color" id="colhhh1" onchange="colorElement(this.id)"/>
+                       <button id="delhhh1" type="button" class="btn btn-sm btn-danger ml-2"
                         onclick="deleteHeader(this.id)">Delete</button>
                     </div>
                     <div class="form-group" id="rp1">
@@ -156,7 +158,9 @@
                         <option value="small">Small</option>
                         <option selected value="medium">Medium</option>
                         <option value="large">Large</option>
-                      </select> <button id="delp1" type="button" class="btn btn-sm btn-danger ml-2"
+                      </select> 
+                      <input class="ml-2" type="color" id="colp1" onchange="colorElement(this.id )"/>
+                      <button id="delp1" type="button" class="btn btn-sm btn-danger ml-2"
                         onclick="deleteHeader(this.id)">Delete</button>
                     </div>
                   </div>
@@ -267,7 +271,9 @@
         '<option value="small">Small</option>' +
         '<option selected value="medium">Medium</option>' +
         '<option value="large">Large</option>' +
-        '</select>' + '<button id="delhhh' + lastId + '" type="button" class="btn btn-sm btn-danger ml-2" onclick="deleteHeader(this.id)">Delete</button>' +
+        '</select>' + 
+        '<input class="ml-2" type="color" id="colhhh' + lastId + '" onchange="colorElement(this.id )"/>' + 
+        '<button id="delhhh' + lastId + '" type="button" class="btn btn-sm btn-danger ml-2" onclick="deleteHeader(this.id)">Delete</button>' +
         '</div>';
       newPrevAdd = '<h6 class="center preview" id="dhhh' + lastId + '">Header Text</h6>';
 
@@ -290,7 +296,9 @@
         '<option value="small">Small</option>' +
         '<option selected value="medium">Medium</option>' +
         '<option value="large">Large</option>' +
-        '</select>' + '<button id="delp' + lastPId + '" type="button" class="btn btn-sm btn-danger ml-2" onclick="deleteHeader(this.id)">Delete</button>' +
+        '</select>' + 
+        '<input class="ml-2" type="color" id="colp' + lastPId + '" onchange="colorElement(this.id )"/>' + 
+        '<button id="delp' + lastPId + '" type="button" class="btn btn-sm btn-danger ml-2" onclick="deleteHeader(this.id)">Delete</button>' +
         '</div>';
       newPrevAdd = '<p class="preview" id="dp' + lastPId + '">Paragraph Text</p>';
 
@@ -334,7 +342,10 @@
       child.parentNode.removeChild(child);
       child2.parentNode.removeChild(child2);
     }
-
+    function colorElement(id){
+      id = id.replace('col', '');
+      document.getElementById('d' + id).style.color = event.target.value
+    }
     function showVideo() {
       document.getElementById('video').classList.remove('d-none');
     }
